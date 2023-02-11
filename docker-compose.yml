@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    api:
+        build: ./google-tanslator
+        ports: 
+            - 8000:8000
+        environment:
+            - DB_URL=mongodb://db/google-tanslator
+        volumes:
+            - ./google-tanslator:/google-tanslator
+    db:
+        image: mongo
+        ports:
+            - 27017:27017
+        volumes:
+            - taskdb:/data/db
+volumes:
+    taskdb: 
